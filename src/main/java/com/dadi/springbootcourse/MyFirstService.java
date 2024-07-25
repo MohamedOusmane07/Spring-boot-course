@@ -3,49 +3,54 @@ package com.dadi.springbootcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
+@PropertySources({
+        @PropertySource("classpath:custom.properties"),
+        @PropertySource("classpath:custom-file-2.properties")
+}) // Allow to read properties from another file
 public class MyFirstService {
 
 
     private  MyFirstClass myFirstClass;
-    private Environment environment;
+    @Value("${my.custom.properties}")
+    private String customProperty;
+    @Value("${my.prop}")
+    private String customPropertyFromAnotherFile;
+    @Value("${my.prop.2}")
+    private String customPropertyFromAnotherFile2;
+    @Value("${my.custom.properties.int}")
+    private Integer customPropertyInt;
 
 
-    @Autowired
-    public void setMyFirstClass(@Qualifier("mySecondBean") MyFirstClass myFirstClass) {
+    public MyFirstService(
+            @Qualifier("mySecondBean")MyFirstClass myFirstClass) {
         this.myFirstClass = myFirstClass;
     }
-
-
-    @Autowired
-    public void setEnvironment(Environment environment) {
-        this.environment = environment;
-    }
-
-    public String getJavaVersion(){
-        return environment.getProperty("java.version");
-    }
-    public String getOsName(){
-        return environment.getProperty("os.name");
-    }
-    public String getProp(){
-        return environment.getProperty("spring.application.name");
-    }
-
-
-
-
-
-
-
-
 
     public String tellAStory(){
         return "the dependency is saying : "+ myFirstClass.sayHello();
     }
 
 
+    public String getCustomProperty() {
+        return customProperty;
+    }
+
+    public Integer getCustomPropertyInt() {
+        return customPropertyInt;
+    }
+
+    public String getCustomPropertyFromAnotherFile() {
+        return customPropertyFromAnotherFile;
+    }
+
+    public String getCustomPropertyFromAnotherFile2() {
+        return customPropertyFromAnotherFile2;
+    }
 }

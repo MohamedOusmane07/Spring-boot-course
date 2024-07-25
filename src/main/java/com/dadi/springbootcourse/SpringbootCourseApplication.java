@@ -10,14 +10,13 @@ public class SpringbootCourseApplication {
     public static void main(String[] args) {
 
         var ctx=SpringApplication.run(SpringbootCourseApplication.class, args);
-       // myFirstClass = ctx.getBean("myFirstBean",MyFirstClass.class);
-       //System.out.println(myFirstClass.sayHello());
 
        MyFirstService myFirstService = ctx.getBean("myFirstService",MyFirstService.class);
         System.out.println(myFirstService.tellAStory());
-        System.out.println(myFirstService.getJavaVersion());
-        System.out.println(myFirstService.getOsName());
-        System.out.println(myFirstService.getProp());
+        System.out.println(myFirstService.getCustomProperty());
+        System.out.println(myFirstService.getCustomPropertyInt());
+        System.out.println(myFirstService.getCustomPropertyFromAnotherFile());
+        System.out.println(myFirstService.getCustomPropertyFromAnotherFile2());
 
     }
 
