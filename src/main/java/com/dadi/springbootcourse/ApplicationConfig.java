@@ -9,13 +9,11 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfig {
 
     @Bean
-    //@Qualifier("first")
     public MyFirstClass myFirstBean(){
         return new MyFirstClass("My First Bean");
     }
 
     @Bean
-    //@Qualifier("second")
     public MyFirstClass mySecondBean(){
         return new MyFirstClass("My Second Bean");
     }
