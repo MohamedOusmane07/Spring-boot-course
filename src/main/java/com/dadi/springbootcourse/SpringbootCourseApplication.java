@@ -14,7 +14,10 @@ public class SpringbootCourseApplication {
        //System.out.println(myFirstClass.sayHello());
 
        MyFirstService myFirstService = ctx.getBean("myFirstService",MyFirstService.class);
-        System.out.printf(myFirstService.tellAStory());
+        System.out.println(myFirstService.tellAStory());
+        System.out.println(myFirstService.getJavaVersion());
+        System.out.println(myFirstService.getOsName());
+        System.out.println(myFirstService.getProp());
 
     }
 
