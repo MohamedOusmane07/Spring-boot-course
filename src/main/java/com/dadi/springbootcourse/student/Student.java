@@ -4,14 +4,11 @@ import com.dadi.springbootcourse.studentProfile.StudentProfile;
 import com.dadi.springbootcourse.school.School;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 @Entity
-@NoArgsConstructor @AllArgsConstructor @Getter @Setter
+@NoArgsConstructor @AllArgsConstructor @Getter @Setter @Builder
 @Table(name = "T_STUDENT")
 public class Student {
 
@@ -25,8 +22,7 @@ public class Student {
     private Integer age;
     @Column(unique = true)
     private String email;
-    @Column(updatable = false, insertable = false)
-    private String some_Column;
+
 
 
     @OneToOne(mappedBy = "student",

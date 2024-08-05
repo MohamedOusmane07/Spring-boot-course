@@ -3,7 +3,6 @@ package com.dadi.springbootcourse.student;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,7 +20,7 @@ public class StudentService {
 
     public StudentResponseDto saveStudent(StudentDto studentDto) {
 
-        var student= studentMapper.toStudent(studentDto);
+        var student= studentMapper.fromStudentDto(studentDto);
         return studentMapper.fromStudent(studentRepository.save(student));
 
     }
@@ -55,7 +54,7 @@ public class StudentService {
     }
 
     public StudentResponseDto updateStudent(StudentDto studentDto) {
-        var student= studentMapper.toStudent(studentDto);
+        var student= studentMapper.fromStudentDto(studentDto);
         return studentMapper.fromStudent(studentRepository.save(student));
     }
 }
