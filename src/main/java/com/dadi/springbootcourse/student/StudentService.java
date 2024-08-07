@@ -50,6 +50,7 @@ public class StudentService {
     }
 
     public void deleteStudentById(Integer id) {
+
         studentRepository.deleteById(id);
     }
 
